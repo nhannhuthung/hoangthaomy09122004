@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A Bouquet for Thảo My</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!--
+  A rose bouquet, drawn and animated with letters and symbols - the web version of the Python program.
+
+  css/style.css          the page around the bouquet: the black screen, "tap to open", the sound button
+  js/settings.js         what you'd want to change: the note, the music, the timings
+  js/data.js             the random layout (the same as the Python version's)
+  js/maths.js            small maths helpers
+  js/timeline.js         when the growth reaches each height
+  js/camera.js           where we look from, the light, the swing, how points land on the character grid
+  js/looks.js            the colours and the characters
+  js/roses.js            where the 19 roses sit, how big, which purple, when each opens
+  js/petals.js           one rose's shape, at every stage of opening
+  js/greenery.js         stems, foliage, leaves, baby's breath
+  js/wrapper.js          the wrapping paper, and how it blows out like a skirt
+  js/bow.js              the ribbon, bow and tails
+  js/scene.js            every point that is showing at a given moment
+  js/render.js           points into characters: depth, light, petal outlines, edge strokes
+  js/sparks.js           the gold sparks as each rose opens
+  js/stars.js            the twinkling stars, and the shapes stars are drawn with
+  js/drawing-stars.js    the sparkling stars that draw the bouquet as it grows
+  js/falling.js          loose petals tumbling down
+  js/overlays.js         stars, sparks and petals drawn over the bouquet
+  js/message.js          the note that types itself out
+  js/frame.js            one whole frame, put together
+  js/draw.js             drawing it on the page: the characters, the note, the glow, the status lines
+  js/music.js            the song: loop, fade in, pause, mute
+  js/main.js             starting it, the controls, the animation loop
+
+  The song comes from the project's music folder (../music, next to this web folder) - which one
+  is set in js/settings.js. The scripts share one set of names, so they load in this order.
+-->
+<canvas id="stage" aria-label="A bouquet of purple roses, drawn and animated with letters and symbols"></canvas>
+<button id="open" class="open" type="button"><span>tap to open</span></button>
+<button id="sound" class="sound" type="button" hidden aria-label="Mute the music">
+  <svg id="sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"></path><path d="M16.5 8.5a5 5 0 0 1 0 7"></path><path d="M19 6a8.5 8.5 0 0 1 0 12"></path></svg>
+  <svg id="sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><path d="M4 9v6h4l5 4V5L8 9H4z"></path><path d="M17 9l5 6"></path><path d="M22 9l-5 6"></path></svg>
+</button>
+<script src="js/settings.js"></script>
+<script src="js/data.js"></script>
+<script src="js/maths.js"></script>
+<script src="js/timeline.js"></script>
+<script src="js/camera.js"></script>
+<script src="js/looks.js"></script>
+<script src="js/roses.js"></script>
+<script src="js/petals.js"></script>
+<script src="js/greenery.js"></script>
+<script src="js/wrapper.js"></script>
+<script src="js/bow.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sparks.js"></script>
+<script src="js/stars.js"></script>
+<script src="js/drawing-stars.js"></script>
+<script src="js/falling.js"></script>
+<script src="js/overlays.js"></script>
+<script src="js/message.js"></script>
+<script src="js/frame.js"></script>
+<script src="js/draw.js"></script>
+<script src="js/music.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
