@@ -2,19 +2,74 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>A Bouquet for Thảo My</title>
-<!-- The bouquet lives in the web folder. This page only sends visitors there, so the site's
-     plain address works too (for example https://your-name.github.io/your-repo/). -->
-<meta http-equiv="refresh" content="0; url=web/index.html">
-<style>
-  html, body { height: 100%; margin: 0; background: #000; }
-  body { display: grid; place-items: center; color: #c99bff; font: 15px/1.4 "Roboto Mono", Consolas, monospace; }
-  a { color: inherit; }
-</style>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="web/css/style.css">
 </head>
 <body>
-<a href="web/index.html">open the bouquet</a>
-<script>location.replace("web/index.html");</script>
+<!--
+  A rose bouquet, drawn and animated with letters and symbols - the web version of the Python program.
+
+  web/css/style.css          the page around the bouquet: the black screen, "tap to open", the sound button
+  web/js/settings.js         what you'd want to change: the note, the music, the timings
+  web/js/data.js             the random layout (the same as the Python version's)
+  web/js/maths.js            small maths helpers
+  web/js/timeline.js         when the growth reaches each height
+  web/js/camera.js           where we look from, the light, the swing, how points land on the character grid
+  web/js/looks.js            the colours and the characters
+  web/js/roses.js            where the 19 roses sit, how big, which purple, when each opens
+  web/js/petals.js           one rose's shape, at every stage of opening
+  web/js/greenery.js         stems, foliage, leaves, baby's breath
+  web/js/wrapper.js          the wrapping paper, and how it blows out like a skirt
+  web/js/bow.js              the ribbon, bow and tails
+  web/js/scene.js            every point that is showing at a given moment
+  web/js/render.js           points into characters: depth, light, petal outlines, edge strokes
+  web/js/sparks.js           the gold sparks as each rose opens
+  web/js/stars.js            the twinkling stars, and the shapes stars are drawn with
+  web/js/drawing-stars.js    the sparkling stars that draw the bouquet as it grows
+  web/js/falling.js          loose petals tumbling down
+  web/js/overlays.js         stars, sparks and petals drawn over the bouquet
+  web/js/message.js          the note that types itself out
+  web/js/frame.js            one whole frame, put together
+  web/js/draw.js             drawing it on the page: the characters, the note, the glow, the status lines
+  web/js/music.js            the song: loop, fade in, pause, mute
+  web/js/main.js             starting it, the controls, the animation loop
+
+  The song comes from the music folder - which one is set in web/js/settings.js.
+  The scripts share one set of names, so they load in this order.
+-->
+<canvas id="stage" aria-label="A bouquet of purple roses, drawn and animated with letters and symbols"></canvas>
+<button id="open" class="open" type="button"><span>tap to open</span></button>
+<button id="sound" class="sound" type="button" hidden aria-label="Mute the music">
+  <svg id="sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"></path><path d="M16.5 8.5a5 5 0 0 1 0 7"></path><path d="M19 6a8.5 8.5 0 0 1 0 12"></path></svg>
+  <svg id="sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><path d="M4 9v6h4l5 4V5L8 9H4z"></path><path d="M17 9l5 6"></path><path d="M22 9l-5 6"></path></svg>
+</button>
+<script src="web/js/settings.js"></script>
+<script src="web/js/data.js"></script>
+<script src="web/js/maths.js"></script>
+<script src="web/js/timeline.js"></script>
+<script src="web/js/camera.js"></script>
+<script src="web/js/looks.js"></script>
+<script src="web/js/roses.js"></script>
+<script src="web/js/petals.js"></script>
+<script src="web/js/greenery.js"></script>
+<script src="web/js/wrapper.js"></script>
+<script src="web/js/bow.js"></script>
+<script src="web/js/scene.js"></script>
+<script src="web/js/render.js"></script>
+<script src="web/js/sparks.js"></script>
+<script src="web/js/stars.js"></script>
+<script src="web/js/drawing-stars.js"></script>
+<script src="web/js/falling.js"></script>
+<script src="web/js/overlays.js"></script>
+<script src="web/js/message.js"></script>
+<script src="web/js/frame.js"></script>
+<script src="web/js/draw.js"></script>
+<script src="web/js/music.js"></script>
+<script src="web/js/main.js"></script>
 </body>
 </html>

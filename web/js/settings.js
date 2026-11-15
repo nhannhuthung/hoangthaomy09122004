@@ -7,8 +7,8 @@ const MESSAGE_PK = 26;           // size of the note in a 965 px tall window (it
 const GRID_ROWS = 90;            // rows of characters to fit in the window - more = finer
 const GLOW = 0.55;               // the soft glow around the characters (0 = none)
 const SHOW_STATS = true;         // the status lines at the bottom and the timer at the top
-// the song, looping ("" = no music) - from the project's music folder, next to the web folder
-const MUSIC_FILE = "../music/Harry Styles - Coming Up Roses - short.mp3";
+// the song, looping ("" = no music) - from the music folder, next to index.html
+const MUSIC_FILE = "music/Harry Styles - Coming Up Roses - short.mp3";
 const MUSIC_VOLUME = 0.6;        // 0 .. 1
 
 const T_GROW = [0.0, 1.8];       // the stems grow from the bottom up, sparkling stars leading them
