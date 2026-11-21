@@ -3,7 +3,7 @@
 
 const BIRTHDAY = [12, 9];         // her birthday (month, day): each year's order of daily notes starts from it
 // the effect on a note's [marked] words, by day ("month-day"): party, christmas, newyear or pink (other days: pink)
-const NOTE_EFFECTS = { "12-9": "party", "12-24": "christmas", "12-25": "christmas", "1-1": "newyear", "3-8": "pink", "10-20": "pink" };
+const NOTE_EFFECTS = { "12-9": "party", "12-24": "christmas", "12-25": "christmas", "12-31": "newyear", "1-1": "newyear", "3-8": "pink", "10-20": "pink" };
 const LINE_DELAY = 1.0;          // pause (s) after a line has typed out, before the next one starts
 const TYPE_SPEED_MIN = 10;       // letters per second the note types at ...
 const TYPE_TIME_MAX = 12;        // ... but a long note types faster, so it never takes longer than this (s) to type out

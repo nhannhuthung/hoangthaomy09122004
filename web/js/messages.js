@@ -433,6 +433,37 @@ const MESSAGES = `
 408. some of your favorite days haven't even happened yet, and that's the magic of being alove.
 409. worrying doesn't take away tomorrow's troubles, it takes away today's peace.
 
+added 2026-11-21
+
+410. your life will be wonderful because you are wonderful, and it will be full of love because you are full of love.
+411. it won't suddenly happen overnight, but if you give up, it will never happen.
+412. sometimes you don't need a sign from the universe. you need to trust what you're capable of doing.
+413. you're not just this ... or this ... or that. you're a million things.
+414. maybe you can't have it all, but you don't need it all.
+415. in case you make yourself smaller and smaller and smaller, here's a hug.
+416. there are people who don't see you even when you're right in front of them. and there others who see you everywhere, even you're not.
+417. when they tell you that it's impossible, remember that at the entrance of NASA it says: "it's aerodynamically proven that, due to its size and weight, the bee can't fly. but the bee doesn't know it."
+418. you are not your thoughts. your worth is so much more than what your mind is telling you.
+419. one day, you will look back on this time of your life with infinite gratitude that you pushed through.
+420. you deserve to be loved and respected, always.
+421. you are blooming just as beautifully as the flowers you love.
+422. just as flowers find their way to bloom, you too find your way.
+423. look at the flowers blooming around you. a gentle reminder that you are growing, too.
+424. i want you not to play with you, not to use you, not to hurt you. but to make you feel loved, happy, safe, protected, valued and supported. always.
+425. you are important to me. 'important,' in Latin, means 'to carry within.' and that's exactly it: i carry you inside me. wherever i go, you are there with me.
+426. just because you have a thought doesn't make it true. your thoughts are not always true. sometimes they're just a little bit of a mean thought. no matter what you think or feel, you are still enough.
+427. you never lose, you either win or learn.
+428. the world will convince you that you need more, i hope you carry the gratitude to see you're already have enough.
+429. i will always care for you. even if i can no longer be there for you to see it. you'll feel it in the breeze and the sunshine and the grass between your toes.
+430. no matter how dark it gets, the sun will rise again and kiss your forehead, kiss your cheeks and kiss your smile.
+431. there are no wrong decisions, because every choice simply takes you exactly where you're meant to go.
+432. from the many hopes, i hope thay you live with a calm heart.
+433. if you don't know what to pursue in life right now, pursue yourself. pursue becoming the healthiest, happiest, most healed, most present, most confident version of yourself.
+434. your self-love must be stronger than your desire to be loved. don't get so caught up in being someone else's favourite person that you forget to enjoy being your ow.
+435. there is so much more to life than the present.
+436. what others think of you has nothing to do with who you are.
+437. you don't have to be perfect to be deserving of good things.
+
 
 [Happy Birthday!] | Hoàng Thảo My | <3 (December 9th)
 
@@ -440,11 +471,11 @@ const MESSAGES = `
 
 [Happy Vietnamese Women's day, princess.] | you look pretty as always. | <3 (October 20th)
 
-[Merry Christmas Eve!] | Santa is checking his list one last time tonight. don't worry, you're definitely on the nice one. also keep yourself warm. (December 24th)
+[Christmas Eve] today! | Santa is checking his list one last time tonight. don't worry, you're definitely on the nice one. also keep yourself warm. (December 24th)
 
 [Merry Christmas!] | hope you have a great holiday. Santa is coming, 'cause you have been kind this year. (December 25th)
 
-before this year end, i wanna tell you: thank you for helping me, thank you for being there, thank you for listening, thank you for understanding, thank you for believing, thank you for showing up, thank you for making life feel a little lighter. (December 31st)
+it's [New Year's Eve!] | before this year end, i wanna tell you: | thank you for helping me, thank you for being there, thank you for listening, thank you for understanding, thank you for believing, thank you for showing up, thank you for making life feel a little lighter. (December 31st)
 
 [Happy New Year!] | i wish you health and success. i wish you all the happiness in the world. i wish you nothing but the best in life. (January 1st)
 `;
