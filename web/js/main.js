@@ -2,7 +2,8 @@
 /* Starting it, the controls, and the animation loop.
    "tap to open" starts the bouquet and the music; after that a tap pauses and resumes.
    On a keyboard: Space pause, R replay, M mute.
-   To look at one moment, add "?t=12.5" to the page's address (it shows that moment, paused). */
+   To look at one moment, add "?t=12.5" to the page's address (it shows that moment, paused).
+   To see another day's note, add "?date=2026-12-25" (both together: "?date=2026-12-25&t=40"). */
 
 const openButton = document.getElementById("open");
 const state = { started: false, paused: false, t: 0, sky: 0, last: 0 };

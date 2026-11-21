@@ -56,8 +56,9 @@ function draw(t, idle) {
   glow();
   if (!idle && SHOW_STATS) drawStats(t, f.stats);
 }
-function drawNote(note) {               // small letters, spaced out; the <3 beats as one
+function drawNote(note) {               // small letters, spaced out; the <3 beats as one; [marked] words get the day's effect
   const { cw, ch, ox, oy } = view, px = Math.max(8, Math.round(note.size * 0.62));
+  const box = { x0: Infinity, x1: -Infinity, y0: Infinity, y1: -Infinity };   // round the [marked] letters shown so far
   ctx.font = `${px}px ${MONO}`; ctx.textAlign = "center"; ctx.textBaseline = "middle";
   for (const ln of note.lines) {
     const cy = oy + ln.row * ch + ch / 2;
@@ -70,9 +71,14 @@ function drawNote(note) {               // small letters, spaced out; the <3 bea
         const w = 0.4 * Math.min(ln.beat, 1), s = 1 + 0.3 * ln.beat, c = HEART.map((a) => Math.round(a + (255 - a) * w));
         ctx.save(); ctx.translate(cx + note.advance / 2, cy); ctx.scale(s, s);
         ctx.fillStyle = `rgb(${c[0]},${c[1]},${c[2]})`; ctx.fillText("<3", 0, 0); ctx.restore();
+      } else if (ln.marked && ln.marked[i]) {
+        fxLetter(note.fx, letter, cx, cy, ln.a + i, note.t, px);
+        box.x0 = Math.min(box.x0, cx); box.x1 = Math.max(box.x1, cx); box.y0 = Math.min(box.y0, cy); box.y1 = Math.max(box.y1, cy);
       } else { ctx.fillStyle = INK; ctx.fillText(letter, cx, cy); }
     }
   }
+  ctx.globalAlpha = 1;
+  if (box.x0 <= box.x1) fxAround(note.fx, box, note.t - note.fxDone, px, note.advance);
   ctx.globalAlpha = 1; ctx.textAlign = "left"; ctx.textBaseline = "top";
 }
 const GLOW_BUF = [];

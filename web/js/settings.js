@@ -1,14 +1,24 @@
 "use strict";
 /* What you'd want to change: the note, the music, the look and when each stage happens. */
 
-const MESSAGE_LINES = ["Happy Birthday", "Hoàng Thảo My", "<3"];   // the note, line by line
+const BIRTHDAY = [12, 9];         // her birthday (month, day): each year's order of daily notes starts from it
+// the effect on a note's [marked] words, by day ("month-day"): party, christmas, newyear or pink (other days: pink)
+const NOTE_EFFECTS = { "12-9": "party", "12-24": "christmas", "12-25": "christmas", "1-1": "newyear", "3-8": "pink", "10-20": "pink" };
 const LINE_DELAY = 1.0;          // pause (s) after a line has typed out, before the next one starts
+const TYPE_SPEED_MIN = 10;       // letters per second the note types at ...
+const TYPE_TIME_MAX = 12;        // ... but a long note types faster, so it never takes longer than this (s) to type out
 const MESSAGE_PK = 26;           // size of the note in a 965 px tall window (it scales with the window)
 const GRID_ROWS = 90;            // rows of characters to fit in the window - more = finer
 const GLOW = 0.55;               // the soft glow around the characters (0 = none)
 const SHOW_STATS = true;         // the status lines at the bottom and the timer at the top
 // the song, looping ("" = no music) - from the music folder, next to index.html
 const MUSIC_FILE = "music/Harry Styles - Coming Up Roses - short.mp3";
+// a different song on some days ("month-day"), e.g. "12-25": "music/christmas.mp3"; "" = the usual song above
+// (a song that can't be found plays the usual one instead)
+const DAY_MUSIC = { "12-24": "music/Wham - Last Christmas - short.mp3",
+                    "12-25": "music/Công Thành, Lynn - Feliz Navidad - short.mp3", 
+                    "12-31": "music/Madelynn - Chào Mừng Năm Mới - short.mp3", 
+                    "1-1": "music/ABBA - Happy New Year - short.mp3" };
 const MUSIC_VOLUME = 0.6;        // 0 .. 1
 
 const T_GROW = [0.0, 1.8];       // the stems grow from the bottom up, sparkling stars leading them

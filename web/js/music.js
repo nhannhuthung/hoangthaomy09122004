@@ -1,15 +1,24 @@
 "use strict";
 /* The song: it loops, fades in, pauses with the bouquet, and can be muted. Browsers only let
-   music start after a tap - which is what "tap to open" is for. */
+   music start after a tap - which is what "tap to open" is for. Some days have their own song (DAY_MUSIC). */
 
 const soundButton = document.getElementById("sound");
 const soundOn = document.getElementById("sound-on"), soundOff = document.getElementById("sound-off");
 let music = null;
-if (MUSIC_FILE) {
-  music = new Audio(MUSIC_FILE);
-  music.loop = true; music.preload = "auto";
-  music.addEventListener("error", () => { music = null; soundButton.hidden = true; });
+function loadSong(file, fallback) {     // the song; if it can't be found, the fallback instead (if any)
+  const song = new Audio(file);
+  song.loop = true; song.preload = "auto";
+  song.addEventListener("error", () => {
+    if (music !== song) return;         // (the music was switched off meanwhile)
+    music = null; soundButton.hidden = true;
+    if (!fallback) return;
+    loadSong(fallback, "");
+    music.muted = song.muted;
+    if (state.started && !state.paused) playMusic(true);
+  });
+  music = song;
 }
+{ const day = DAY_MUSIC[TODAY_KEY]; if (day || MUSIC_FILE) loadSong(day || MUSIC_FILE, day ? MUSIC_FILE : ""); }
 function fadeIn() {                     // the song fades in over 2 seconds
   if (!music) return;
   const t0 = performance.now();
