@@ -3,11 +3,17 @@
    A short note gets big, spaced-out letters; a long one smaller, closer letters, wrapped onto as many rows
    as it needs - as big as still fits between the bouquet and the bottom of the window. */
 
-const TYPE_SPEED = Math.max(TYPE_SPEED_MIN, MESSAGE_LINES.join("").length / TYPE_TIME_MAX);   // letters per second
-const LINE_START = [];                  // when each line starts typing (a line wrapped onto more rows types straight on)
-{ let tt = T_MSG; for (const line of MESSAGE_LINES) { LINE_START.push(tt); tt += line.length / TYPE_SPEED + LINE_DELAY; } }
-const FX_DONE = MESSAGE_MARKS.reduce(   // when the [marked] words have typed out (their effect starts flying round them)
-  (done, marks, i) => Math.max(done, ...marks.map(([, to]) => LINE_START[i] + to / TYPE_SPEED)), -Infinity);
+let TYPE_SPEED, LINE_START, FX_DONE, fittedNote = null;
+function prepareNote() {                // today's note's timing (worked out again if the note changes - see messages.js)
+  TYPE_SPEED = Math.max(TYPE_SPEED_MIN, MESSAGE_LINES.join("").length / TYPE_TIME_MAX);   // letters per second
+  LINE_START = [];                      // when each line starts typing (a line wrapped onto more rows types straight on)
+  let tt = T_MSG;
+  for (const line of MESSAGE_LINES) { LINE_START.push(tt); tt += line.length / TYPE_SPEED + LINE_DELAY; }
+  FX_DONE = MESSAGE_MARKS.reduce(       // when the [marked] words have typed out (their effect starts flying round them)
+    (done, marks, i) => Math.max(done, ...marks.map(([, to]) => LINE_START[i] + to / TYPE_SPEED)), -Infinity);
+  fittedNote = null;
+}
+prepareNote();
 const NOTE_LOOKS = [                    // letter and row spacing, per unit of size (the letters are 0.62 of it)
   { advance: 0.6, spacing: 1.15, most: 3 },           // short: spaced out, like the birthday note - at most 3 rows
   { advance: 0.42, spacing: 0.92, most: Infinity },   // long: closer together, any number of rows
@@ -34,7 +40,6 @@ function markedRow(i, a, b) {           // which letters of line i, from a to b,
   }
   return out;
 }
-let fittedNote = null;
 function fitNote(width, room, base) {   // the biggest note that fits in width x room (px): its size, spacing and rows
   const key = `${width} ${room} ${base}`;
   if (fittedNote && fittedNote.key === key) return fittedNote;

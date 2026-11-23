@@ -8,12 +8,13 @@
    each year: those get their place first the next year (the longer one has waited, the sooner), at a
    random point in it. Every phone and computer shows the same note on the same day.
 
-   Adding messages: give each new one the next number, and put a line "added 2027-03-14" (the day you add
-   them) above them - a new "added" line for each batch, and keep the old ones. New messages join in from
-   her next birthday, sure to come up that year; the year she is in stays exactly as it was.
-   A message's number is its name: rewording a message is fine, but don't change its number, and rather
-   than deleting one, rewrite it. (Deleting a message, removing an "added" line, or adding messages without
-   one shuffles things a little - and a message she has already seen this year might come again.)
+   Adding messages: just give each new one the next number - nothing else. Each year is made of the messages
+   there were on her birthday: the site looks that up on GitHub (this file as it was at the end of that day),
+   so messages added during the year wait for her next birthday by themselves, and are sure to come up then.
+   The year she is in stays exactly as it was.
+   A message's number is its name: rewording a message is fine (the new words show at once), but don't change
+   its number, and rather than deleting one, rewrite it - deleting one shuffles the rest of the year a little,
+   and a message she has already seen might come again.
 
    Long messages wrap by themselves; a "|" starts a new line where you want one. Lines starting with "#"
    are ignored. To see another day's note, add "?date=2026-12-25" to the page's address.
@@ -432,9 +433,6 @@ const MESSAGES = `
 407. don't abandon joy because it is brief. don't commit to solitude because happiness is fleeting. it's okay that good things do not last forever. it's okay to simply enjoy a thing for as long as you have it.
 408. some of your favorite days haven't even happened yet, and that's the magic of being alove.
 409. worrying doesn't take away tomorrow's troubles, it takes away today's peace.
-
-added 2026-11-21
-
 410. your life will be wonderful because you are wonderful, and it will be full of love because you are full of love.
 411. it won't suddenly happen overnight, but if you give up, it will never happen.
 412. sometimes you don't need a sign from the universe. you need to trust what you're capable of doing.
@@ -463,6 +461,51 @@ added 2026-11-21
 435. there is so much more to life than the present.
 436. what others think of you has nothing to do with who you are.
 437. you don't have to be perfect to be deserving of good things.
+438. be positive, think positive and positive things will happen.
+439. you're going to be surprised real soon at how everything suddenly and miraculously worked in your favor. you will realize how your current situation was only leading you to be a blessing. nothing is a mistake.
+440. next time when you think of something beautiful, don't forget to count yourself too.
+441. the universe doesn't take from you without giving something better.
+442. the beauty you see in anything is a reflection of the beauty in you.
+443. being left out doesn't mean there's something wrong with you. sometimes people won't choose you. that doesn't mean you are any less wonderful.
+444. appreciate what you have while you're working for what you want. don't spend so much time, looking forward to the next chapter that you forget to live this one.
+445. your direction is more important than your speed. so take it slow and enjoy the journey as much as you can.
+446. and here you are, continuing on, despite how hard it's been. i'm proud of you.
+447. when it gets hard to breathe and easy to spiral into dark thoughts, i want you to remember this: you are here for a reason. no matter how insignificant you currently feel, you are making a positive impact in this life.
+448. 1 bad minute? you still have 59. 1 bad hour? you still have 23. 1 bad day? you still have 6. 1 bad week? you still have 3. 1 bad month? you still have 11. 1 bad year? you still have your whole life.
+449. one day, you're gonna sit down and congratulate yourself. you will smile and say it was hard but you made.
+450. just because you would do it for them doesn't mean they would do it for you.
+451. if they wanted to, they would because when you wanted to, you did.
+456. set a goal and take it as a direction, not something you must achieve; then you will work more efficiently and enjoy the progress.
+457. you have completely no idea how beautiful you are in my eyes.
+458. eat good, drink good, feel good, it's all good. 
+459. it's okay to not know how to put your feelings into words. 
+460. it's okay. it will be okay. you're okay. you will be okay.
+461. it's okay to feel lost. you're not behind, you're just on your own path.
+462. maybe living your best life just means slowing down enough to see how good it already is.
+463. your death will come on an ordinary day, in the middle of unfinished plans, and the world will continue without you. so live a little more.
+464. the most dangerous form of blindness is believing that your perspective is the only reality.
+465. the magic in your childhood wasn't because you were a child, it was because you were living in the present.
+466. the way you speak to yourself matters.
+467. be kind to yourself. you deserve it.
+468. talk to yourself like someone you love.
+469. love yourself like the way you wish they did.
+470. don't lose belief in yourself, you are so deserving.
+471. i hope you never forget how many beautiful things there are about you.
+472. you are loved no matter how you feel.
+473. you still haven't met all of the people who are going to love you.
+474. sometimes people pretend you're a bad person so they don't feel guilty for how they treated you.
+475. i hope you know that even when i'm not around, i'm always rooting for you.
+476. did you drink water today or just matcha?
+477. a beautiful thing is never perfect. you are not perfect and you are still beautiful.
+478. what's coming is better that what's gone.
+479. don't ruin your beautiful soul to fit into an ugly society.
+480. dear you, who cried yourself to sleep and still got up and chose yourself in the morning, i'm so proud of you.
+481. stop shrinking yourself just to make someone else feel whole.
+482. don't lose yourself, okay? i know it's hard, but you are going to be okay. don't lose yourself to all of this stress. you are okay, you are you and you are going to be just fine.
+483. you don't have to be where someone else is to be exactly where you need to be. take your time, take a breath, keep going. this life is yours. you will never be late in life, it is your life.
+484. you love the ocean but doesn't mean you really have to drown in it to prove people that you do.
+485. people don't always treat you like how they feel about you. sometimes they treat you based on the state of mind they're in. they will unintentionally hurt you because they're at war with themselves and suffering with things that has nothing to do with you.
+486. we all have two lives. the second begins when you realize you only have one. live right now, because you do not know when you won't have any more time.
 
 
 [Happy Birthday!] | Hoàng Thảo My | <3 (December 9th)
@@ -501,19 +544,16 @@ function readNote(text) {               // "[Merry Christmas!] | hope ..." -> it
   return { lines, marks };
 }
 
-function readMessages(text) {           // the numbered messages (and when they were added), and the dated ones by day
+function readMessages(text) {           // the numbered messages, and the dated ones by day
   const daily = [], dated = {}, ids = new Set();
-  let added = -Infinity;                // the messages above any "added" line were there from the start
   for (const raw of text.split("\n")) {
     const line = raw.trim();
-    if (!line || line.startsWith("#")) continue;
-    const a = line.match(/^added\s+(?:on\s+)?(\d{4})-(\d{1,2})-(\d{1,2})$/i);          // "added 2027-03-14"
-    if (a) { added = dayNumber(+a[1], +a[2], +a[3]); continue; }
+    if (!line || line.startsWith("#") || /^added\s/i.test(line)) continue;   // ("added" lines aren't needed any more)
     const n = line.match(/^(\d+)\.\s*(.+)$/);                                       // "12. ..."
     if (n) {
       if (ids.has(+n[1])) console.warn(`messages.js: two messages have the number ${n[1]} - give each its own`);
       ids.add(+n[1]);
-      daily.push({ id: +n[1], note: readNote(n[2]), added });
+      daily.push({ id: +n[1], note: readNote(n[2]) });
       continue;
     }
     const d = line.match(/^(.+?)\s*\(\s*([a-z]+)\s+(\d{1,2})(?:st|nd|rd|th)?\s*\)$/i);   // "... (December 25th)"
@@ -537,6 +577,46 @@ const yearSeed = (year) => mix32(Math.imul(year, 0x9e3779b1) ^ 0x2545f491);   //
 const rank = (year, id) => mix32((yearSeed(year) + Math.imul(id, 0x27d4eb2f)) >>> 0);
 
 const FIRST_YEAR = 2026;                // her first year with the bouquet: from her birthday in 2026
+const herYear = (y, m, d) => (m > BIRTHDAY[0] || (m === BIRTHDAY[0] && d >= BIRTHDAY[1]) ? y : y - 1);   // the year of hers that day is in, by the birthday it began on
+
+/* Which messages there were on each birthday. Each birthday's list is looked up once on GitHub - this file as it
+   was at the end of that day - and then remembered on this phone or computer. Until a birthday has passed, or
+   without a connection, the messages as they are now stand in. */
+const MESSAGES_PATH = "web/js/messages.js";
+const POOLS = {};                       // year -> the numbers of the messages there were on her birthday that year
+const birthdayEnd = (year) => new Date(year, BIRTHDAY[0] - 1, BIRTHDAY[1] + 1);   // the midnight after it
+const poolKey = (year) => `bouquet ${GITHUB_REPO} ${year}`;
+async function fetchPool(until) {       // the message numbers in this file as it was on GitHub at that moment (null: no file yet)
+  const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/commits?path=${MESSAGES_PATH}&until=${until.toISOString()}&per_page=1`);
+  if (!res.ok) throw new Error(`GitHub said ${res.status}`);
+  const commits = await res.json();
+  if (!commits.length) return null;
+  const raw = await fetch(`https://raw.githubusercontent.com/${GITHUB_REPO}/${commits[0].sha}/${MESSAGES_PATH}`);
+  if (!raw.ok) throw new Error(`GitHub said ${raw.status}`);
+  const text = await raw.text(), from = text.indexOf("const MESSAGES = `");
+  return from < 0 ? null : readMessages(text.slice(from + 18, text.indexOf("\n`;", from))).daily.map((msg) => msg.id);
+}
+function poolsToLookUp(year) {          // the passed birthdays up to that year's that we don't know yet (after taking what's remembered)
+  const missing = [];
+  for (let y = FIRST_YEAR; y <= year && birthdayEnd(y) <= new Date(); y++) {
+    if (POOLS[y]) continue;
+    try { const saved = localStorage.getItem(poolKey(y)); if (saved) { POOLS[y] = new Set(JSON.parse(saved)); continue; } } catch (e) { /* no storage */ }
+    missing.push(y);
+  }
+  return missing;
+}
+async function lookUpPools(years) {     // find them on GitHub and remember them; true if any was found
+  let found = false;
+  for (const y of years) {
+    try {
+      const ids = await fetchPool(birthdayEnd(y));
+      if (!ids || !ids.length) continue;
+      POOLS[y] = new Set(ids); found = true;
+      try { localStorage.setItem(poolKey(y), JSON.stringify(ids)); } catch (e) { /* no storage */ }
+    } catch (e) { console.warn(`messages.js: couldn't look up the messages of her ${y} birthday (${e.message})`); }
+  }
+  return found;
+}
 
 function numberedDays(from, to, dated) { // how many of the days from .. to-1 get a numbered message
   let n = 0;
@@ -552,7 +632,9 @@ function yearPlan(year, notes) {        // that year's messages in their order, 
   const [bm, bd] = BIRTHDAY, start = dayNumber(year, bm, bd);
   const days = numberedDays(start + 1, dayNumber(year + 1, bm, bd), notes.dated);
   const last = year > FIRST_YEAR ? yearPlan(year - 1, notes) : null;
-  const pool = notes.daily.filter((msg) => msg.added <= start);   // the messages added by her birthday
+  const known = POOLS[year];            // the messages there were on her birthday (not known yet: all of them)
+  let pool = notes.daily.filter((msg) => !known || known.has(msg.id));
+  if (!pool.length) pool = notes.daily.slice();
   const waited = new Map();             // years in a row a message didn't come up (a new one counts as 1)
   for (const msg of pool) waited.set(msg.id, !last || last.shown.has(msg.id) ? 0 : (last.waited.get(msg.id) || 0) + 1);
   const byRank = (a, b) => rank(year, a.id) - rank(year, b.id) || a.id - b.id;
@@ -561,10 +643,10 @@ function yearPlan(year, notes) {        // that year's messages in their order, 
   return (plans[year] = { order, shown: new Set(order.map((msg) => msg.id)), waited });
 }
 function noteFor(y, m, d, notes = NOTES) { // the note for that day: { lines, marks }
-  const [bm, bd] = BIRTHDAY, { dated } = notes;
+  const { dated } = notes;
   if (dated[dayKey(m, d)]) return dated[dayKey(m, d)];   // her birthday, the holidays
-  const year = m > bm || (m === bm && d >= bd) ? y : y - 1;   // this year of hers began on her birthday in that year
-  const start = dayNumber(year, bm, bd), k = numberedDays(start + 1, dayNumber(y, m, d), dated);   // k: days before today
+  const year = herYear(y, m, d), start = dayNumber(year, BIRTHDAY[0], BIRTHDAY[1]);
+  const k = numberedDays(start + 1, dayNumber(y, m, d), dated);   // the days before this one that had a numbered message
   const { order } = yearPlan(year, notes);
   return order[k % order.length].note;   // (more days than messages: they'd start over)
 }
@@ -573,7 +655,21 @@ function todayDate() {                  // [year, month, day]: today on this pho
   return q ? [+q[1], +q[2], +q[3]] : [now.getFullYear(), now.getMonth() + 1, now.getDate()];
 }
 const TODAY = todayDate(), TODAY_KEY = dayKey(TODAY[1], TODAY[2]);   // (the music picks its song by it too)
-const TODAY_NOTE = { ...noteFor(...TODAY), fx: NOTE_EFFECTS[TODAY_KEY] || "pink" };
-const MESSAGE_LINES = TODAY_NOTE.lines;  // the note, line by line ...
-const MESSAGE_MARKS = TODAY_NOTE.marks;  // ... the [marked] stretches of each line: [[from, to], ...] ...
-const MESSAGE_FX = TODAY_NOTE.fx;        // ... and their effect
+let MESSAGE_LINES, MESSAGE_MARKS, MESSAGE_FX;   // today's note, line by line; the [marked] stretches of each line; their effect
+function setTodaysNote() {
+  const note = noteFor(...TODAY);
+  MESSAGE_LINES = note.lines; MESSAGE_MARKS = note.marks; MESSAGE_FX = NOTE_EFFECTS[TODAY_KEY] || "pink";
+}
+{
+  const missing = poolsToLookUp(herYear(...TODAY));
+  setTodaysNote();                      // straight away, with what's known ...
+  if (missing.length) {                 // ... and again once the birthdays we didn't know are looked up (once the page is ready)
+    document.addEventListener("DOMContentLoaded", async () => {
+      if (!(await lookUpPools(missing))) return;
+      if (typeof state !== "undefined" && state.started && !state.paused && state.t >= T_MSG) return;   // (not while it's being typed)
+      NOTES.plans = {};
+      setTodaysNote();
+      if (typeof prepareNote === "function") prepareNote();
+    });
+  }
+}

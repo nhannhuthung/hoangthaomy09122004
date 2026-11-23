@@ -2,6 +2,8 @@
 /* What you'd want to change: the note, the music, the look and when each stage happens. */
 
 const BIRTHDAY = [12, 9];         // her birthday (month, day): each year's order of daily notes starts from it
+// where the site is on GitHub ("owner/repo"): on each birthday it looks up which messages there were then
+const GITHUB_REPO = "nhannhuthung/hoangthaomy09122004";
 // the effect on a note's [marked] words, by day ("month-day"): party, christmas, newyear or pink (other days: pink)
 const NOTE_EFFECTS = { "12-9": "party", "12-24": "christmas", "12-25": "christmas", "12-31": "newyear", "1-1": "newyear", "3-8": "pink", "10-20": "pink" };
 const LINE_DELAY = 1.0;          // pause (s) after a line has typed out, before the next one starts
@@ -29,6 +31,7 @@ const T_BLOOM = 4.0;             // the rose on top opens, then the ring round i
 const TIER_GAP = 1.6;            // ... each ring that much later
 const OPEN = 3.0;                // seconds it takes one rose to open
 const T_SPIN = 11.4, SPIN = 0.22, SPIN_PERIOD = 13.0;   // then the bouquet swings gently
+const T_HINT = [13.5, 19.5];     // the "drag to spin" hint at the top (until she has turned the bouquet once)
 const T_MSG = 11.8;              // the note starts typing
 const T_FALL = 12.4;             // petals start drifting down
 const FADE_IN = 0.35;            // seconds each new bit takes to fade in

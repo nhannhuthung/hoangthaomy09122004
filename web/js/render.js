@@ -15,18 +15,24 @@ function grids(rows, cols) {
 }
 /* Rasterise the bouquet: per cell its material (-1 = empty), brightness, stroke (-1 = none),
    colour and depth (into the work grids). */
+// what stays with the wrap when she turns the bouquet by hand: the wrap and the bow keep facing her and the flowers
+// turn inside them (the flowers reach out past the wrap at the sides and back, so turning the wrap too would show it
+// cutting through them)
+const WITH_WRAP = MATERIALS.map((m) => m[0] === "paper" || m[0] === "rim" || m[0] === "ribbon");
 function render(t, rows, cols, aspect) {
-  const g = grids(rows, cols), cells = rows * cols, view = viewMatrix(spinAt(t)), sc = scene(t), fit = zoom(aspect);
-  const P = sc.P, n = sc.n, [m0, m1, m2, m3, m4, m5, m6, m7, m8] = view, [ox, oy, oz] = CAM_OFF;
+  const g = grids(rows, cols), cells = rows * cols, spin = spinAt(t), sc = scene(t), fit = zoom(aspect);
+  const view = viewMatrix(spin + userTurn.angle), wrap = userTurn.angle ? viewMatrix(spin) : view;
+  const P = sc.P, n = sc.n, M = sc.M, [ox, oy, oz] = CAM_OFF;
   const ky = FOCAL * 0.5 * fit * rows, kx = FOCAL * 0.5 * fit * cols / aspect, my = MIDDLE * rows, mx = 0.5 * cols;
   const zbuf = g.zbuf, owner = g.owner;
   zbuf.fill(Infinity); owner.fill(-1);
   for (let i = 0; i < n; i++) {                             // nearest point per cell wins
-    const x = P[3 * i], y = P[3 * i + 1], z = P[3 * i + 2], qz = m6 * x + m7 * y + m8 * z - oz;
+    const v = WITH_WRAP[M[i]] ? wrap : view, x = P[3 * i], y = P[3 * i + 1], z = P[3 * i + 2];
+    const qz = v[6] * x + v[7] * y + v[8] * z - oz;
     if (qz <= NEAR) continue;
-    const r = Math.floor(my - (m3 * x + m4 * y + m5 * z - oy) * ky / qz);
+    const r = Math.floor(my - (v[3] * x + v[4] * y + v[5] * z - oy) * ky / qz);
     if (r < 0 || r >= rows) continue;
-    const c = Math.floor(mx + (m0 * x + m1 * y + m2 * z - ox) * kx / qz);
+    const c = Math.floor(mx + (v[0] * x + v[1] * y + v[2] * z - ox) * kx / qz);
     if (c < 0 || c >= cols) continue;
     const cell = r * cols + c;
     if (qz < zbuf[cell]) { zbuf[cell] = qz; owner[cell] = i; }
@@ -35,16 +41,16 @@ function render(t, rows, cols, aspect) {
   const sid = g.sid, petal = g.petal, behind = g.behind;
   for (let c = 0; c < cells; c++) sid[c] = g.owner[c] >= 0 ? sc.I[g.owner[c]] : -1;
   petalEdges(g);
-  const N = sc.N, M = sc.M, T = sc.T, I = sc.I, mats = g.mats, lum = g.lum, col = g.col, ow = g.owner;
+  const N = sc.N, T = sc.T, I = sc.I, mats = g.mats, lum = g.lum, col = g.col, ow = g.owner;
   const lx = LIGHT[0], ly = LIGHT[1], lz = LIGHT[2];
   for (let cell = 0; cell < cells; cell++) {
     const o = ow[cell];
     if (o < 0) { mats[cell] = -1; continue; }
-    const x = P[3 * o], y = P[3 * o + 1], z = P[3 * o + 2];
-    const qx = m0 * x + m1 * y + m2 * z - ox, qy = m3 * x + m4 * y + m5 * z - oy, qz = m6 * x + m7 * y + m8 * z - oz;
+    const m = WITH_WRAP[M[o]] ? wrap : view, x = P[3 * o], y = P[3 * o + 1], z = P[3 * o + 2];
+    const qx = m[0] * x + m[1] * y + m[2] * z - ox, qy = m[3] * x + m[4] * y + m[5] * z - oy, qz = m[6] * x + m[7] * y + m[8] * z - oz;
     const ql = Math.max(Math.hypot(qx, qy, qz), 1e-12), vx = -qx / ql, vy = -qy / ql, vz = -qz / ql;   // towards the eye
     const ax = N[3 * o], ay = N[3 * o + 1], az = N[3 * o + 2];
-    let nx = m0 * ax + m1 * ay + m2 * az, ny = m3 * ax + m4 * ay + m5 * az, nz = m6 * ax + m7 * ay + m8 * az;
+    let nx = m[0] * ax + m[1] * ay + m[2] * az, ny = m[3] * ax + m[4] * ay + m[5] * az, nz = m[6] * ax + m[7] * ay + m[8] * az;
     const facing = nx * vx + ny * vy + nz * vz, raw = M[o];
     let mat = raw;
     if (facing < 0) { nx = -nx; ny = -ny; nz = -nz; mat = BACK[raw]; }

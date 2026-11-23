@@ -55,6 +55,17 @@ function draw(t, idle) {
   }
   glow();
   if (!idle && SHOW_STATS) drawStats(t, f.stats);
+  if (!idle) drawHint(t);
+}
+const HINT = matchMedia("(pointer: coarse)").matches ? "<  swipe to spin  >" : "<  drag to spin  >";
+function drawHint(t) {                  // "drag to spin", fading in and out at the top - until she has turned it once
+  const [t0, t1] = T_HINT;
+  if (userTurn.used || t < t0 || t > t1) return;
+  const a = Math.min(1, (t - t0) / 0.8, (t1 - t) / 0.8);
+  ctx.font = `${view.stat}px ${MONO}`; ctx.textAlign = "center"; ctx.textBaseline = "top";
+  ctx.globalAlpha = 0.85 * a; ctx.fillStyle = "rgb(201,155,255)";
+  ctx.fillText(HINT, view.W / 2, view.padT + 10);
+  ctx.globalAlpha = 1; ctx.textAlign = "left";
 }
 function drawNote(note) {               // small letters, spaced out; the <3 beats as one; [marked] words get the day's effect
   const { cw, ch, ox, oy } = view, px = Math.max(8, Math.round(note.size * 0.62));
