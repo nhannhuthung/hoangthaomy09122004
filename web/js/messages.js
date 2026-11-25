@@ -477,7 +477,7 @@ const MESSAGES = `
 451. if they wanted to, they would because when you wanted to, you did.
 456. set a goal and take it as a direction, not something you must achieve; then you will work more efficiently and enjoy the progress.
 457. you have completely no idea how beautiful you are in my eyes.
-458. eat good, drink good, feel good, it's all good. 
+458. eat good, drink good, feel good, it's all good. feel like limbo, enjoy the tempo of your life.
 459. it's okay to not know how to put your feelings into words. 
 460. it's okay. it will be okay. you're okay. you will be okay.
 461. it's okay to feel lost. you're not behind, you're just on your own path.
@@ -506,6 +506,23 @@ const MESSAGES = `
 484. you love the ocean but doesn't mean you really have to drown in it to prove people that you do.
 485. people don't always treat you like how they feel about you. sometimes they treat you based on the state of mind they're in. they will unintentionally hurt you because they're at war with themselves and suffering with things that has nothing to do with you.
 486. we all have two lives. the second begins when you realize you only have one. live right now, because you do not know when you won't have any more time.
+487. i hope you fall in love with being alive.
+488. kill the urge to be chosen. choose yourself.
+489. you are never too much and you are always enough.
+490. you spend most of your life inside your head. make it a nice place to be.
+491. in a world with a million choices, i hope you choose your own happiness first.
+492. never regret having a good heart. everything good comes back to you, multipled.
+493. please live for yourself. don't forget this life is yours, not somebody else's. live beautifully, love vibrantly and celebrate to the fullest. dance for yourself, sing for yourself. be kind to yourself.
+494. i've seen your heart and it is very pretty. it would be the shame if you didn't show it off more, i bet the world would appreciate it even more than me.
+495. you're not too much. you're just not for everyone.
+496. thinking about it fifty times won't change what happened once.
+497. just because something feels different doesn't mean it's bad. in fact, if you know the familiar thing didn't work, it's probably a better idea to try it differently.
+498. you can sympathize with the blind who never get to see daylight, with the deaf who never get to hear the melodies of nature, with the mute who cannot give voice to the deepest cries of their souls. yet, you show no pity for the blindness of your heart, the deafness of your soul, or the silence of your conscience.
+499. some people carry a different kind of light. you don't see it in their eyes or their smile. you feel it, in the way everything becomes a little more beautiful when they're around. you are one of those people.
+500. when your head gets mean to you, come stay in mine a while. you've only ever been loved in here.
+501. if you're sad, i won't tell you to have a good day. instead, just simply have a day. stay alive, feed yourself, drink lots of water. don't give up on yourself just yet, things will get better soon.
+502. you are not hard to love, you just have a big heart and sometimes people can't handle that.
+503. rain keeps pouring, tears sprout mushrooms, but the sun is gonna dry it all up.
 
 
 [Happy Birthday!] | Hoàng Thảo My | <3 (December 9th)
